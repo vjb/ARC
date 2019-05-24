@@ -377,9 +377,9 @@ require(dojoConfig, [], function () {
 
                     if (this.consoleLogging) {
                         console.log(this.id + ".update");
-										}
-										
-										callback();
+                    }
+
+                    callback();
                 },
 
 
