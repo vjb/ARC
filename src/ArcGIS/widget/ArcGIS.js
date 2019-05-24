@@ -387,35 +387,12 @@ require(dojoConfig, [], function() {
 			},
 
 			update: function (obj, callback) {
-				var errorMessage = "";
 				
 				if (this.consoleLogging){
 					console.log(this.id + ".update");
 				}
-						
-				this._contextObj = obj;
-
-				this._resetSubscriptions();
-							
-				// Widget configured variables		
-				this.objectid = this._contextObj ? this._contextObj.get(this.objectIDAttr) : null;
-				this.centerCoordinates = this._contextObj ? this._contextObj.get(this.centerAttr) : null;
-				this.geometryType = this._contextObj ? this._contextObj.get(this.geometryTypeAttr) : null;
-				
-				// if no map available, so at initial load after postCreate, load map in callback of getHostName
-				if (!this._gisMap){
-					this._getHostNameMF(callback);				
-				} // if map  already available, zoom to object if available. use coordinates if existing, else query ArcGIS to get coordinates
-				else if (this.objectid){
-					this._referenceMxObjectsArr = [obj];	
-					this._refreshMap();
-				} else {
-					// if no object exists, zoom out to Default Zoom Level and Default X, Y
-					this.zoomRow();
-				}
-				callback();
-				
 			},
+			
 			resize: function (box) {
 				if (this.consoleLogging){
 					console.log(this.id + ".resize");
