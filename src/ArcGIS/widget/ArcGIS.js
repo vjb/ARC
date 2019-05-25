@@ -87,6 +87,7 @@ require(dojoConfig, [], function () {
             'dojo/json',
             'dijit/registry',
             'dojo/text!./template/ArcGIS.html',
+            'dojo/Deferred',
             // now all ArcGIS files
             'ArcGIS/lib/dojox/gfx/Mover',
             'ArcGIS/lib/dojox/gfx/Moveable',
@@ -376,17 +377,20 @@ require(dojoConfig, [], function () {
                         console.log(this.id + ".postCreate");
                     }
 
-                    var mapid = "02ca94fa08e243eaa250d7268194b3cf";
+                    //var mapid = "02ca94fa08e243eaa250d7268194b3cf";
+                    var mapid = "59aa0bd74151487eb0d8484f694189f1";
 
-                    esri.arcgis.utils.arcgisUrl = "https://dsraenterprise2.canadacentral.cloudapp.azure.com/portal/sharing/content/items";
+                    //esri.arcgis.utils.arcgisUrl = "https://dsraenterprise2.canadacentral.cloudapp.azure.com/portal/sharing/content/items";
 
                     var mapDeferred = esri.arcgis.utils.createMap(mapid, "ArcGIS_widget_ArcGIS_0", {
                         mapOptions: {
-                            nav: true,
+                            nav: false,
                             isKeyboardNavigation: true,
                             logo: false
                         }
                     });
+
+                    mapDeferred.then( function(response){ var map = response.map});
 
 
                 },
