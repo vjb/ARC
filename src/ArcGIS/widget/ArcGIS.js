@@ -392,16 +392,32 @@ require(dojoConfig, [], function () {
                     });
 
                     mapDeferred.then(function (response) {
-                        
+
                         console.log("map has loaded");
                         var map = response.map
-                        
+
                         //add the scalebar
                         console.log("adding Scalebar");
                         var scalebar = new esri.dijit.Scalebar({
                             map: map,
                             scalebarUnit: "english"
                         });
+
+                        // add search
+                      debugger;
+                        console.log("adding search box");
+                        var searchDiv = domConstruct.create('div', {
+                            className: 'searchDiv'
+                        }, document.getElementsByClassName("mapcontainer")[0] );
+                        
+                        console.log("adding Search");
+
+                        var search = new esri.dijit.Search({
+                            map: map,
+                            showInfoWindowOnSelect: true,
+                            enableInfoWindow: true
+                        }, "searchme");
+                        search.startup();
 
                     });
 
