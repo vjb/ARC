@@ -377,8 +377,8 @@ require(dojoConfig, [], function () {
                         console.log(this.id + ".postCreate");
                     }
 
-                    //var mapid = "02ca94fa08e243eaa250d7268194b3cf";
-                    var mapid = "59aa0bd74151487eb0d8484f694189f1";
+                    var mapid = "477a43fcce8f43c5a593366fccdffae0"; // vin map demo
+                    //var mapid = "59aa0bd74151487eb0d8484f694189f1";
 
                     //esri.arcgis.utils.arcgisUrl = "https://dsraenterprise2.canadacentral.cloudapp.azure.com/portal/sharing/content/items";
 
@@ -390,7 +390,9 @@ require(dojoConfig, [], function () {
                         }
                     });
 
-                    mapDeferred.then( function(response){ var map = response.map});
+                    mapDeferred.then(function (response) {
+                        var map = response.map
+                    });
 
 
                 },
