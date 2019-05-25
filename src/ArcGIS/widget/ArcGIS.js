@@ -319,6 +319,7 @@ require(dojoConfig, [], function () {
             'ArcGIS/lib/esri/dijit/editing/TemplatePicker',
             'ArcGIS/lib/esri/dijit/BasemapToggle',
             'ArcGIS/lib/esri/dijit/BasemapLayer',
+            'ArcGIS/lib/esri/dijit/Scalebar',
             'ArcGIS/lib/esri/styles/basic',
             'ArcGIS/lib/esri/tasks/AddressCandidate',
             'ArcGIS/lib/esri/tasks/locator',
@@ -391,7 +392,17 @@ require(dojoConfig, [], function () {
                     });
 
                     mapDeferred.then(function (response) {
+                        
+                        console.log("map has loaded");
                         var map = response.map
+                        
+                        //add the scalebar
+                        console.log("adding Scalebar");
+                        var scalebar = new esri.dijit.Scalebar({
+                            map: map,
+                            scalebarUnit: "english"
+                        });
+
                     });
 
 
