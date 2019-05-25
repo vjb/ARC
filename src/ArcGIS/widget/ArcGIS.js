@@ -437,6 +437,39 @@ require(dojoConfig, [], function () {
                         }, "legendme");
                         legendDijit.startup();
 
+                        console.log("adding drawing tools to toolbar")
+
+                        var toolbar = new esri.toolbars.Draw(map, {
+                            tooltipOffset: 20,
+                            drawTime: 90
+                        });
+
+                        function addToMap(evt) {
+                            var symbol;
+                            toolbar.deactivate();
+                            map.showZoomSlider();
+                            symbol = new esri.symbol.SimpleMarkerSymbol();
+                            var graphic = new esri.Graphic(evt.geometry, symbol);
+                            map.graphics.add(graphic);
+                        }
+
+                        toolbar.on("draw-end", addToMap);
+
+
+                        var d = document.getElementById("point");
+
+                        on(d, 'click', activateTool);
+
+                        function activateTool() {
+                            //var tool = this.id;
+                            debugger;
+                            toolbar.activate("point");
+                            map.hideZoomSlider();
+                        }
+
+
+
+
                     });
 
 
