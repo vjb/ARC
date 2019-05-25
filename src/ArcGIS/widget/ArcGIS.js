@@ -234,6 +234,9 @@ require(dojoConfig, [], function () {
             'ArcGIS/lib/esri/tasks/QueryTask',
             'ArcGIS/lib/esri/tasks/RelationshipQuery',
             'ArcGIS/lib/esri/tasks/StatisticDefinition',
+
+
+
             'ArcGIS/lib/esri/dijit/_EventedWidget',
             'ArcGIS/lib/esri/dijit/PopupRenderer',
             'ArcGIS/lib/esri/PopupInfo',
@@ -310,6 +313,7 @@ require(dojoConfig, [], function () {
             'ArcGIS/lib/esri/layers/TrackManager',
             'ArcGIS/lib/esri/layers/HeatmapManager',
             'ArcGIS/lib/esri/layers/FeatureLayer',
+            'ArcGIS/lib/esri/layers/LayerDrawingOptions',
             'ArcGIS/lib/esri/dijit/editing/TemplatePickerItem',
             'ArcGIS/lib/esri/dijit/editing/TemplatePicker',
             'ArcGIS/lib/esri/dijit/BasemapToggle',
@@ -325,7 +329,8 @@ require(dojoConfig, [], function () {
             'dijit/layout/ContentPane',
             'dijit/Toolbar',
             'dijit/form/Button',
-            'dijit/layout/AccordionContainer'
+            'dijit/layout/AccordionContainer',
+            'ArcGIS/lib/esri/arcgis/utils'
         ],
         function (declare, dom, dojoDom, on, domClass, parser, _WidgetBase, _TemplatedMixin, domStyle, domConstruct, arrayUtils, event, lang, baseUnload, cookie, JSON, registry, widgetTemplate) {
             'use strict';
@@ -370,6 +375,19 @@ require(dojoConfig, [], function () {
                     if (this.consoleLogging) {
                         console.log(this.id + ".postCreate");
                     }
+
+                    var mapid = "02ca94fa08e243eaa250d7268194b3cf";
+
+                    esri.arcgis.utils.arcgisUrl = "https://dsraenterprise2.canadacentral.cloudapp.azure.com/portal/sharing/content/items";
+
+                    var mapDeferred = esri.arcgis.utils.createMap(mapid, "ArcGIS_widget_ArcGIS_0", {
+                        mapOptions: {
+                            nav: true,
+                            isKeyboardNavigation: true,
+                            logo: false
+                        }
+                    });
+
 
                 },
 
